@@ -26,8 +26,10 @@ def scrap_jobs(url):
         "Flex_display_flex__i0l0hl2 Flex_gap_space16__i0l0hlj Flex_direction_row__i0l0hl3"
     )
 
-    _, _, _, area, deadLine = etc.find_all(
-        "span", class_="Typography_variant_size14__344nw27")
+    area = etc.find_all(
+        "span", class_="Typography_variant_size14__344nw27")[-2]
+    deadLine = etc.find_all(
+        "span", class_="Typography_variant_size14__344nw27")[-1]
 
     job_data = {
         "title": title,
@@ -60,6 +62,7 @@ total_pages = get_pages(url)
 for x in range(total_pages):
   url = f"https://www.jobkorea.co.kr/Search?duty=1000230%2C1000231&tabType=recruit&Page_No={x+1}&local=I000"
   print(f"Scraping jobs...{x}/{total_pages}")
+  print(f"url...{url}")
   scrap_jobs(url)
 
 print(len(all_jobs))
