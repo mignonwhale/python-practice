@@ -71,3 +71,5 @@ writter.writerow(["title", "company", "xp", "link"])
 
 for job in all_jobs:
   writter.writerow(job.values())
+
+file.close()
